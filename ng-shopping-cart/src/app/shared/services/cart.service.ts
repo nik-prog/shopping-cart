@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CartItem } from '../types';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class CartService {
   private cartItemsSubject = new BehaviorSubject<CartItem[]>([]);
   cartItems$ = this.cartItemsSubject.asObservable();
 
-  constructor() {}
+  constructor(private snackBar: MatSnackBar) {}
 
   addToCart(product: any): void {
     const currentItems = this.cartItemsSubject.value;
@@ -18,7 +19,14 @@ export class CartService {
     );
 
     if (existingItem) {
-      existingItem.quantity += 1;
+      if (existingItem.quantity == 10) {
+        this.snackBar.open('Maximum 10 units allowed per product', 'OK', {
+          duration: 3000,
+          panelClass: ['error-snackbar'],
+        });
+      } else {
+        existingItem.quantity += 1;
+      }
     } else {
       currentItems.push({ product, quantity: 1 });
     }

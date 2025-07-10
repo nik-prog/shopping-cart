@@ -3,6 +3,7 @@ import { CartItem } from '../../../shared/types';
 import { CartService } from '../../../shared/services/cart.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cart-page',
@@ -14,7 +15,11 @@ export class CartPageComponent implements OnInit {
   total = 0;
   cartSubscription!: Subscription;
 
-  constructor(private cartService: CartService, private dialog: MatDialog) {}
+  constructor(
+    private cartService: CartService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.cartSubscription = this.cartService.cartItems$.subscribe((items) => {
@@ -28,6 +33,13 @@ export class CartPageComponent implements OnInit {
     const quantity = parseInt(input.value, 10);
     if (quantity < 1) {
       this.cartService.removeFromCart(item.product.id);
+    } else if (quantity > 10) {
+      this.snackBar.open('Maximum 10 units allowed per product', 'OK', {
+        duration: 3000,
+        panelClass: ['error-snackbar'],
+      });
+      input.value = '10'; // Reset to max
+      item.quantity = 10;
     } else {
       this.cartService.updateQuantity(item.product.id, quantity);
     }

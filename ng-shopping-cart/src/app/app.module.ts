@@ -8,8 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ToastrModule } from 'ngx-toastr';
-import { NgmaterialModule } from './ngmaterial.module';
-import { IconsModule } from './icons.module';
+// import { NgmaterialModule } from './ngmaterial.module';
+// import { IconsModule } from './icons.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -23,8 +23,8 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
-    NgmaterialModule,
-    IconsModule,
+    // NgmaterialModule,
+    // IconsModule,
     FormsModule,
     ReactiveFormsModule,
     // OverlayModule,

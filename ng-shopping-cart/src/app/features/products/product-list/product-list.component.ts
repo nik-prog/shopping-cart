@@ -3,6 +3,7 @@ import { Product } from '../../../shared/types';
 import { ProductService } from '../../../shared/services/product.service';
 import { CartService } from '../../../shared/services/cart.service';
 import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-list',
@@ -15,7 +16,10 @@ export class ProductListComponent implements OnInit {
   error: string | null = null;
   getProdsSubscription!: Subscription;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.getProdsSubscription = this.productService.getProducts().subscribe({
@@ -25,6 +29,7 @@ export class ProductListComponent implements OnInit {
       },
       error: (err) => {
         this.error = 'Failed to load products. Please try again later.';
+        this.toastr.error(this.error, 'Error');
         this.isLoading = false;
         console.error(err);
       },

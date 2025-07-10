@@ -1,10 +1,21 @@
 import { NgModule } from '@angular/core';
 
 import { TablerIconsModule } from 'angular-tabler-icons';
-import * as icons from 'angular-tabler-icons/icons';
-
+// import * as icons from 'angular-tabler-icons/icons';
+import {
+  IconShoppingCart,
+  IconTrash,
+  IconUserCircle,
+  IconX,
+} from 'angular-tabler-icons/icons';
+const selectedIcons = {
+  IconShoppingCart,
+  IconUserCircle,
+  IconTrash,
+  IconX,
+};
 @NgModule({
-  imports: [TablerIconsModule.pick(icons)],
+  imports: [TablerIconsModule.pick(selectedIcons)],
   exports: [TablerIconsModule],
 })
 export class IconsModule {

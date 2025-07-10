@@ -6,15 +6,11 @@
       [src]="product.image"
       [alt]="product.title"
     />
-    <!-- <img mat-card-image src="https://material.angular.dev/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
     <mat-card-header>
       <mat-card-title>{{ product.title }}</mat-card-title>
       <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <!-- <p>
-        {{ product.description }}
-      </p> -->
       <div class="product-rating">
         <div class="rating-value">
           <star-rating
@@ -42,30 +38,3 @@
     </mat-card-actions>
   </mat-card>
 </div>
-
-<!-- <div class="product-card">
-  <div class="product-image">
-    <img style="width:15em" [src]="product.image" [alt]="product.title" />
-  </div>
-
-  <div class="product-details">
-    <h3 class="product-title">{{ product.title }}</h3>
-    <p class="product-price">{{ product.price | currency }}</p>
-    <p class="product-category">{{ product.category }}</p>
-
-    <div class="product-rating">
-      <span class="rating-value"
-        >{{ product.rating.rate }} <star-rating [rating]="product.rating.rate" [showHalfStars]="true"></star-rating> ({{ product.rating.count }})</span
-      >
-    </div>
-
-    <button
-      mat-button
-      mat-raised-button
-      class="add-to-cart-btn"
-      (click)="onAddToCart()"
-    >
-      Add to Cart
-    </button>
-  </div>
-</div> -->
