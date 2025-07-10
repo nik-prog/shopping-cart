@@ -1,0 +1,27 @@
+<header class="app-header">
+  <nav class="navbar col-lg-12 col-md-12 col-sm-12">
+    <div class="navbar-logo col-lg-4 col-md-4 col-sm-12">
+      <img src="assets/cart-logo.png" alt="My App Logo" />
+    </div>
+    <ul class="navbar-links col-lg-4 col-md-4 col-sm-12">
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/services">Services</a></li>
+      <li><a routerLink="/about">About</a></li>
+      <li><a routerLink="/blog">Blog</a></li>
+    </ul>
+    <div
+      class="navbar-actions col-lg-4 col-md-4 col-sm-12 d-flex justify-content-end"
+    >
+      <button mat-icon-button color="primary" (click)="openCartDialog()">
+        <i-tabler
+          [name]="'shopping-cart'"
+          [matBadge]="cartCount"
+          [matBadgeHidden]="cartCount == 0"
+        ></i-tabler>
+      </button>
+      <button mat-icon-button color="primary">
+        <i-tabler [name]="'user-circle'"></i-tabler>
+      </button>
+    </div>
+  </nav>
+</header>

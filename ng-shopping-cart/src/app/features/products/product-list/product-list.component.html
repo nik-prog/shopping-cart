@@ -1,0 +1,9 @@
+<div class="product-list">
+  <div *ngIf="isLoading" class="loading">Loading products...</div>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="!isLoading && !error" class="products-container">
+    <app-product-card [data]="products"> </app-product-card>
+  </div>
+</div>

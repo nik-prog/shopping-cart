@@ -1,0 +1,59 @@
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* 250px is the minimum card width */
+  gap: 1em; /* space between cards */
+  padding: 1em;
+  background-color: #e8eaf6;
+}
+
+.product-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-image {
+  width: 100%;
+  height: 15em;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+
+  .rating-count {
+    margin-left: 5px;
+    color: #666;
+    font-size: 0.9em;
+  }
+}
+
+.product-description {
+  color: #555;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; // Pushes actions to bottom
+  padding: 16px;
+
+  .product-price {
+    font-weight: bold;
+    color: #3f51b5;
+    font-size: 1.3em;
+    align-self: end;
+  }
+}

@@ -1,0 +1,84 @@
+<div class="cart-page">
+  <h1 style="text-align: left">Your Shopping Cart</h1>
+
+  <div *ngIf="cartItems.length === 0" class="empty-cart">
+    <div style="padding: 2em">Your cart is currently empty.</div>
+
+    <div>
+      <button
+        (click)="closeDialog()"
+        mat-raised-button
+        color="primary"
+        class="checkout-btn"
+      >
+        Start shopping!
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="cartItems.length > 0" class="cart-items">
+    <div class="cart-item" *ngFor="let item of cartItems">
+      <div class="img-prod-details">
+        <div>
+          <img
+            class="product-image"
+            [src]="item.product.image"
+            [alt]="item.product.title"
+          />
+        </div>
+
+        <div class="item-details">
+          <h3 class="item-title">{{ item.product.title }}</h3>
+          <p class="item-price">Price : {{ item.product.price | currency }}</p>
+
+          <label>Quantity:</label>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              type="number"
+              min="1"
+              [value]="item.quantity"
+              (change)="updateQuantity(item, $event)"
+            />
+          </mat-form-field>
+
+          <div class="item-total" style="margin-top: 1em">
+            Subtotal : {{ item.product.price * item.quantity | currency }}
+          </div>
+
+          <button
+            style="margin-top: 1em"
+            mat-raised-button
+            color="primary"
+            class="remove-item-btn"
+            (click)="removeItem(item.product.id)"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <div class="foot">
+        <div>
+          <h3 class="product-price">Total: {{ total | currency }}</h3>
+        </div>
+
+        <div class="btn-container">
+          <button mat-raised-button color="accent" class="checkout-btn">
+            Proceed to Checkout
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            class="clear-cart-btn"
+            (click)="clearCart()"
+          >
+            Clear Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
