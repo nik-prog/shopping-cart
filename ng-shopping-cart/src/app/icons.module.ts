@@ -19,9 +19,7 @@ const selectedIcons = {
   exports: [TablerIconsModule],
 })
 export class IconsModule {
-  constructor() {
-    console.log('TablerIcons..'); // even if TablerIconModule imported twice in app module and shared module, loads only once
-  }
+  constructor() {}
 }
 
 // NOTES:
