@@ -8,7 +8,6 @@ import {
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CartService } from '../../services/cart.service';
-import { CartPageComponent } from '../../../features/cart/cart-page/cart-page.component';
 import { MatDialog } from '@angular/material/dialog';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -53,7 +52,10 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  openCartDialog(): void {
+  async openCartDialog(): Promise<void> {
+    const { CartPageComponent } = await import(
+      '../../../features/cart/cart-page/cart-page.component'
+    );
     let dialogRef = this.dialog.open(CartPageComponent, {
       width:
         this.windowWidth < 480 ? '80%' : this.cartCount > 0 ? '51%' : '40%',

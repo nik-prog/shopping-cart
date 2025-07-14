@@ -1,5 +1,6 @@
 <div class="responsive-grid">
-  <mat-card *ngFor="let product of data" class="product-card">
+  @for (product of data; track product.id) {
+  <mat-card class="product-card">
     <img
       mat-card-image
       class="product-image"
@@ -37,4 +38,5 @@
       </button>
     </mat-card-actions>
   </mat-card>
+  }
 </div>

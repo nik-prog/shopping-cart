@@ -21,13 +21,9 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AppRoutingModule,
     ToastrModule.forRoot(),
-    // NgmaterialModule,
-    // IconsModule,
     FormsModule,
     ReactiveFormsModule,
-    // OverlayModule,
     HttpClientModule,
     NgxSpinnerModule,
     NgbModule,
